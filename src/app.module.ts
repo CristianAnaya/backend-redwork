@@ -7,6 +7,11 @@ import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { RolesService } from './roles/roles.service';
 import { RolesModule } from './roles/roles.module';
+import { CategoryService } from './category/category.service';
+import { CategoryModule } from './category/category.module';
+import { ServicesService } from './services/services.service';
+import { ServicesController } from './services/services.controller';
+import { ServicesModule } from './services/services.module';
 
 @Module({
   imports: [
@@ -22,7 +27,9 @@ import { RolesModule } from './roles/roles.module';
     }),
     UsersModule,
     AuthModule,
-    RolesModule
+    RolesModule,
+    CategoryModule,
+    ServicesModule
   ],
   controllers: [AppController],
   providers: [AppService],

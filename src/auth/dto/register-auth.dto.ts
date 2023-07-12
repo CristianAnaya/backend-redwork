@@ -20,4 +20,7 @@ export class RegisterUserDto {
     phone: string;
 
     rolesIds: string[];
+
+    nameServices?: string[];
+
 }

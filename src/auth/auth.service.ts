@@ -20,7 +20,7 @@ export class AuthService {
 
         const { email, phone } = user
 
-        const emailExist = await this.usersRepository.findOneBy({ email: email })
+        const emailExist = await this.usersRepository.findOneBy({ phone: email })
 
         if (emailExist) {
             // 409 CONFLICT
@@ -78,7 +78,7 @@ export class AuthService {
                 .getOne();
 
         if (!userFound) {
-            throw new HttpException('El email no existe', HttpStatus.NOT_FOUND)
+            return {}; 
         }
 
         const rolesIds = userFound.roles.map(rol => rol.id); // ['CLIENT', 'ADMIN']
