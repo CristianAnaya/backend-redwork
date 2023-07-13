@@ -18,6 +18,13 @@ export class CategoryController {
         return this.categoriesService.findAll();
     }
 
+    @HasRoles(JwtRole.ADMIN, JwtRole.CLIENT, JwtRole.WORKER)
+    @UseGuards(JwtAuthGuard, JwtRolesGuard)
+    @Get('services')
+    findAllWithServices() {
+        return this.categoriesService.findAlWithServices();
+    }
+
     @HasRoles(JwtRole.ADMIN)
     @UseGuards(JwtAuthGuard, JwtRolesGuard)
     @Post() 

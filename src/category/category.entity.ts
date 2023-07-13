@@ -19,7 +19,7 @@ export class Category {
     @Column( { type: 'datetime', default: () => 'CURRENT_TIMESTAMP'} )
     updated_at: Date;
 
-    @OneToMany(() => Service, service => service.id)
-    service: Service
+    @OneToMany(() => Service, (service) => service.category)
+    services: Service[];
 
 }

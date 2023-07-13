@@ -12,7 +12,11 @@ export class CategoryService {
     ) {}
 
     findAll() {
-        return this.categoriesRepository.find()
+        return this.categoriesRepository.find();
+    }
+
+    async findAlWithServices() {
+        return this.categoriesRepository.find({ relations: ['services'] });
     }
 
     async create(category: CreateCategoryDto) {

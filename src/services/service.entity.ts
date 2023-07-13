@@ -20,7 +20,7 @@ export class Service {
     @Column( { type: 'datetime', default: () => 'CURRENT_TIMESTAMP'} )
     updated_at: Date;
 
-    @ManyToOne(() => Category, (category) => category.id)
-    @JoinColumn({name: 'id_category'})
-    category: Category
+    @ManyToOne(() => Category, (category) => category.services)
+    @JoinColumn({ name: 'id_category' })
+    category: Category;
 }

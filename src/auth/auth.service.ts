@@ -20,11 +20,11 @@ export class AuthService {
 
         const { email, phone } = user
 
-        const emailExist = await this.usersRepository.findOneBy({ phone: email })
+        const emailExist = await this.usersRepository.findOneBy({ email: email })
 
         if (emailExist) {
             // 409 CONFLICT
-            throw new HttpException('El email ya esta registrado', HttpStatus.CONFLICT)
+            throw new HttpException('El correo ya se encuentra registrado', HttpStatus.CONFLICT)
         }
 
         const phoneExist = await this.usersRepository.findOneBy( { phone: phone })
