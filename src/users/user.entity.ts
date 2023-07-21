@@ -1,6 +1,9 @@
 import { Rol } from "src/roles/rol.entity";
-import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert, ManyToMany, JoinTable, OneToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert, ManyToMany, JoinTable, OneToMany, JoinColumn, OneToOne } from "typeorm";
 import { hash } from 'bcrypt'
+import { UserHasCategories } from "./user_has_categories.entity";
+import { Address } from "src/address/address.entity";
+import { WorkerInfo } from "src/worker_info/worker_info.entity";
 
 @Entity({ name: 'users' })
 export class User {
@@ -55,6 +58,16 @@ export class User {
     })
     @ManyToMany(() => Rol, (rol) => rol.users)
     roles: Rol[]
+
+    @OneToMany(() => Address, (address) => address.user)
+    address: Address[];
+
+    @OneToMany(() => UserHasCategories, (uhc) => uhc.user)
+    @JoinColumn({ referencedColumnName: 'id_user' })
+    userHasCategories: UserHasCategories[];
+
+    @OneToOne(() => WorkerInfo, (workerInfo) => workerInfo.worker)
+    workerInfo: WorkerInfo;
 
     // @BeforeInsert()
     // async hasPassword() {

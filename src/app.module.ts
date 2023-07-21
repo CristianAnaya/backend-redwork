@@ -12,6 +12,10 @@ import { CategoryModule } from './category/category.module';
 import { ServicesService } from './services/services.service';
 import { ServicesController } from './services/services.controller';
 import { ServicesModule } from './services/services.module';
+import { AddressController } from './address/address.controller';
+import { AddressService } from './address/address.service';
+import { AddressModule } from './address/address.module';
+import { WorkerInfoModule } from './worker_info/worker_info.module';
 
 @Module({
   imports: [
@@ -29,7 +33,9 @@ import { ServicesModule } from './services/services.module';
     AuthModule,
     RolesModule,
     CategoryModule,
-    ServicesModule
+    ServicesModule,
+    AddressModule,
+    WorkerInfoModule
   ],
   controllers: [AppController],
   providers: [AppService],

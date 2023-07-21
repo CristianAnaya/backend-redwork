@@ -1,5 +1,6 @@
 import { Category } from "src/category/category.entity";
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { UserHasCategories } from "src/users/user_has_categories.entity";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 
 @Entity({ name: 'services' })
@@ -23,4 +24,8 @@ export class Service {
     @ManyToOne(() => Category, (category) => category.services)
     @JoinColumn({ name: 'id_category' })
     category: Category;
+
+    @OneToMany(() => UserHasCategories, (uhc) => uhc.service)
+    userHasCategories: UserHasCategories[];
+    
 }
